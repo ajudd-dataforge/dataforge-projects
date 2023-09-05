@@ -31,8 +31,10 @@ cost_parameters:
   disable_profiling: false
 process_configuration_name: "Databricks JDBC"
 cleanup_configuration_name: "Default"
+ipu_rules_weight: 3
 active_flag: true
 create_datetime: "2023-08-30T18:55:59.224408"
+created_userid: "ajudd@dataforgelabs.com"
 update_datetime: "2023-08-30T18:58:39.131398"
 updated_userid: "ajudd@westmonroe.com"
 raw_attributes:
@@ -92,6 +94,27 @@ raw_attributes:
   column_alias: "c_phone"
   unique_flag: false
   update_datetime: "2023-08-30T19:05:09.289453"
+rules:
+- attribute_name: "reversed_account_balance"
+  name: "reversed account balance"
+  datatype: "decimal"
+  cast_datatype: ""
+  expression: "[This].c_acctbal * -1"
+  expression_parsed: "P<1> * -1"
+  rule_type_code: "E"
+  keep_current_flag: false
+  window_function_flag: false
+  unique_flag: false
+  active_flag: true
+  create_datetime: "2023-09-05T14:18:34.491892"
+  created_userid: "ajudd@dataforgelabs.com"
+  update_datetime: "2023-09-05T14:19:26.292568"
+  updated_userid: "ajudd@dataforgelabs.com"
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "c_acctbal"
+    source_name: "Databricks JDBC Samples - tpch.customer"
 channels:
 - output_name: "Delta Output - TPCH Customers"
   output_source_name: "Databricks JDBC Samples - tpch.customer"
