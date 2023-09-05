@@ -1,0 +1,37 @@
+---
+source_name: "Databricks JDBC Samples - tpch.region"
+source_description: "Auto-created from connection metadata"
+ingestion_parameters:
+  fetch_size: 5000
+  source_query: "select * from tpch.region"
+  trim_string_data: "no_trim"
+  disable_initiation: false
+  spark_jdbc_parameters: {}
+parsing_parameters:
+  force_case_insensitive: true
+  fail_on_missing_columns: false
+  lock_schema_new_columns: false
+  lock_schema_datatype_changes: false
+cdc_refresh_parameters: {}
+alert_parameters:
+  ingestion_failure_emails: []
+  ingestion_failure_topics: []
+  ingestion_success_emails: []
+  ingestion_success_topics: []
+  data_processing_failure_emails: []
+  data_processing_failure_topics: []
+  data_processing_success_emails: []
+  data_processing_success_topics: []
+refresh_type: "full"
+connection_type: "table"
+connection_name: "Databricks JDBC Samples"
+initiation_type: "scheduled"
+cost_parameters:
+  max_retries: 3
+  disable_profiling: false
+process_configuration_name: "Databricks JDBC"
+cleanup_configuration_name: "Default"
+active_flag: true
+create_datetime: "2023-08-30T18:55:59.224408"
+update_datetime: "2023-08-30T18:59:22.180275"
+updated_userid: "ajudd@westmonroe.com"
