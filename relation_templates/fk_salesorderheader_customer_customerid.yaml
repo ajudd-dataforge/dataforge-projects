@@ -1,0 +1,9 @@
+---
+name: "FK_SalesOrderHeader_Customer_CustomerID"
+related_source_template_name: "${GROUP} - Customer"
+description: "Auto-created from connection metadata"
+expression: "[This].customerid = [Related].customerid"
+primary_flag: false
+source_cardinality: "M"
+related_source_cardinality: "1"
+active_flag: true

@@ -1,0 +1,8 @@
+---
+name: "SOD to Customer using token"
+related_source_template_name: "${GROUP} - Customer"
+expression: "[This].token_rule = [Related].customerid"
+primary_flag: false
+source_cardinality: "M"
+related_source_cardinality: "1"
+active_flag: true

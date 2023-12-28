@@ -1,0 +1,9 @@
+---
+name: "FK_SalesOrderHeader_CurrencyRate_CurrencyRateID"
+related_source_template_name: "${GROUP} - CurrencyRate"
+description: "Auto-created from connection metadata"
+expression: "[This].currencyrateid = [Related].currencyrateid"
+primary_flag: false
+source_cardinality: "M"
+related_source_cardinality: "1"
+active_flag: true

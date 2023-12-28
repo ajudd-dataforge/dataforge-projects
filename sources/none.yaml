@@ -1,9 +1,9 @@
 ---
-source_name: "Databricks JDBC Samples - tpch.part"
-source_description: "Auto-created from connection metadata"
+source_name: "None"
+source_description: "x"
 ingestion_parameters:
   fetch_size: 5000
-  source_query: "select * from tpch.part"
+  source_query: "select * from sales.salesorderheader"
   trim_string_data: "no_trim"
   disable_initiation: false
   spark_jdbc_parameters: {}
@@ -22,17 +22,13 @@ alert_parameters:
   data_processing_failure_topics: []
   data_processing_success_emails: []
   data_processing_success_topics: []
-refresh_type: "full"
+refresh_type: "none"
 connection_type: "table"
-connection_name: "Databricks JDBC Samples"
+connection_name: "AdventureWorks no agent"
 initiation_type: "scheduled"
 cost_parameters:
-  max_retries: 3
-  disable_profiling: false
-process_configuration_name: "Databricks JDBC"
+  max_retries: 0
+  disable_profiling: true
+process_configuration_name: "Default Sparky Configuration"
 cleanup_configuration_name: "Default"
 active_flag: true
-create_datetime: "2023-08-30T18:55:59.224408"
-created_userid: "ajudd@dataforgelabs.com"
-update_datetime: "2023-08-30T18:59:03.924617"
-updated_userid: "ajudd@westmonroe.com"

@@ -1,0 +1,20 @@
+---
+name: "U rule with T relation"
+datatype: "int"
+cast_datatype: ""
+attribute_name: "u_rule_with_t_relation"
+expression: "[${GROUP} - SalesOrderHeader].billtoaddressid"
+expression_parsed: "P<1>"
+rule_type_code: "E"
+keep_current_flag: false
+window_function_flag: false
+unique_flag: false
+active_flag: true
+test_source_name: "Group 1 - SalesOrderDetail"
+parameters:
+- id: 1
+  attribute_name: "billtoaddressid"
+  source_template_name: "${GROUP} - SalesOrderHeader"
+  relation_template_names:
+  - "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID"
+  datatype: "int"

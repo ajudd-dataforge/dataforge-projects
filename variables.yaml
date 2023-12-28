@@ -1,0 +1,6 @@
+---
+- type: "Output Table Name"
+  name:
+  - "grouped_output"
+  - "grouped_output3"
+  - "obt_output"

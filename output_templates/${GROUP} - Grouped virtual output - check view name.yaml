@@ -1,0 +1,4 @@
+---
+object_name: "${GROUP} - Grouped virtual output - check view name"
+parameters:
+  view_name: "${GROUP}_virtual_output"

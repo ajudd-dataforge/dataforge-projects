@@ -1,0 +1,9 @@
+---
+name: "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID"
+related_source_template_name: "${GROUP} - SalesOrderHeader"
+description: "Auto-created from connection metadata"
+expression: "[This].salesorderid = [Related].salesorderid"
+primary_flag: false
+source_cardinality: "1"
+related_source_cardinality: "1"
+active_flag: true

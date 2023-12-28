@@ -1,0 +1,52 @@
+---
+output_name: "Group 3 - Grouped virtual output - check view name"
+output_type: "virtual"
+output_package_parameters:
+  view_name: "group_3_virtual_output"
+output_description: "x"
+alert_parameters:
+  output_failure_emails: []
+  output_failure_topics: []
+  output_success_emails: []
+  output_success_topics: []
+post_output_type: "none"
+template_name: "${GROUP} - Grouped virtual output - check view name"
+group_name: "Group 3"
+columns:
+- position: 1
+  name: "currencycode"
+  datatype: "string"
+- position: 2
+  name: "modifieddate"
+  datatype: "timestamp"
+- position: 3
+  name: "name"
+  datatype: "string"
+- position: 4
+  name: "accountnumber"
+  datatype: "string"
+- position: 5
+  name: "customerid"
+  datatype: "int"
+- position: 6
+  name: "customer_t_rule_with_t_relation"
+  datatype: "int"
+- position: 7
+  name: "customer_u_rule_with_t_relation"
+  datatype: "int"
+- position: 8
+  name: "customer_u_rule_with_u_relation"
+  datatype: "long"
+- position: 9
+  name: "personid"
+  datatype: "int"
+- position: 10
+  name: "rowguid"
+  datatype: "string"
+- position: 11
+  name: "storeid"
+  datatype: "int"
+- position: 12
+  name: "territoryid"
+  datatype: "int"
+active_flag: true

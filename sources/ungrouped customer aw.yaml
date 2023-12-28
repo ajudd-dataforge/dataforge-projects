@@ -1,0 +1,171 @@
+---
+source_name: "Ungrouped Customer AW"
+source_description: "x"
+ingestion_parameters:
+  fetch_size: 5000
+  source_query: "select * from sales.customer"
+  trim_string_data: "no_trim"
+  disable_initiation: false
+  spark_jdbc_parameters: {}
+parsing_parameters:
+  force_case_insensitive: true
+  fail_on_missing_columns: false
+  lock_schema_new_columns: false
+  lock_schema_datatype_changes: false
+cdc_refresh_parameters: {}
+alert_parameters:
+  ingestion_failure_emails: []
+  ingestion_failure_topics: []
+  ingestion_success_emails: []
+  ingestion_success_topics: []
+  data_processing_failure_emails: []
+  data_processing_failure_topics: []
+  data_processing_success_emails: []
+  data_processing_success_topics: []
+refresh_type: "full"
+connection_type: "table"
+connection_name: "Abdur AdventureWorks 2019"
+initiation_type: "scheduled"
+cost_parameters:
+  max_retries: 0
+  disable_profiling: true
+hub_view_name: "sales_customer_aw"
+process_configuration_name: "Default Sparky Configuration"
+cleanup_configuration_name: "Default"
+active_flag: true
+raw_attributes:
+- raw_attribute_name: "accountnumber"
+  column_normalized: "accountnumber"
+  raw_metadata:
+    scale: 0
+    precision: 10
+    nullable_flag: false
+  data_type: "string"
+  version_number: 1
+  column_alias: "accountnumber"
+  unique_flag: false
+- raw_attribute_name: "customerid"
+  column_normalized: "customerid"
+  raw_metadata:
+    scale: 0
+    precision: 10
+    nullable_flag: false
+  data_type: "int"
+  version_number: 1
+  column_alias: "customerid"
+  unique_flag: false
+- raw_attribute_name: "modifieddate"
+  column_normalized: "modifieddate"
+  raw_metadata:
+    scale: 3
+    precision: 23
+    nullable_flag: false
+  data_type: "timestamp"
+  version_number: 1
+  column_alias: "modifieddate"
+  unique_flag: false
+- raw_attribute_name: "personid"
+  column_normalized: "personid"
+  raw_metadata:
+    scale: 0
+    precision: 10
+    nullable_flag: true
+  data_type: "int"
+  version_number: 1
+  column_alias: "personid"
+  unique_flag: false
+- raw_attribute_name: "rowguid"
+  column_normalized: "rowguid"
+  raw_metadata:
+    scale: 0
+    precision: 36
+    nullable_flag: false
+  data_type: "string"
+  version_number: 1
+  column_alias: "rowguid"
+  unique_flag: false
+- raw_attribute_name: "storeid"
+  column_normalized: "storeid"
+  raw_metadata:
+    scale: 0
+    precision: 10
+    nullable_flag: true
+  data_type: "int"
+  version_number: 1
+  column_alias: "storeid"
+  unique_flag: false
+- raw_attribute_name: "territoryid"
+  column_normalized: "territoryid"
+  raw_metadata:
+    scale: 0
+    precision: 10
+    nullable_flag: true
+  data_type: "int"
+  version_number: 1
+  column_alias: "territoryid"
+  unique_flag: false
+dependencies:
+- source_name: "Group 1 - Customer"
+  hard_dependency_flag: false
+  dependency_interval: "00:00:00"
+  active_flag: true
+- source_name: "Group 3 - Customer"
+  hard_dependency_flag: false
+  dependency_interval: "00:00:00"
+  active_flag: true
+channels:
+- output_name: "OBT"
+  output_source_name: "Ungrouped Customer AW"
+  operation_type: "none"
+  output_package_parameters:
+    key_history: false
+    full_output_flag: false
+    custom_parameters: {}
+    allow_output_regeneration: true
+  include_pass_flag: true
+  include_fail_flag: false
+  include_warn_flag: false
+  output_source_columns:
+  - output_column_name: "accountnumber"
+    expression: "accountnumber"
+    datatype: "string"
+    parameter:
+      name: "accountnumber"
+      type: "raw"
+  - output_column_name: "customerid"
+    expression: "customerid"
+    datatype: "int"
+    parameter:
+      name: "customerid"
+      type: "raw"
+  - output_column_name: "modifieddate"
+    expression: "modifieddate"
+    datatype: "timestamp"
+    parameter:
+      name: "modifieddate"
+      type: "raw"
+  - output_column_name: "personid"
+    expression: "personid"
+    datatype: "int"
+    parameter:
+      name: "personid"
+      type: "raw"
+  - output_column_name: "rowguid"
+    expression: "rowguid"
+    datatype: "string"
+    parameter:
+      name: "rowguid"
+      type: "raw"
+  - output_column_name: "storeid"
+    expression: "storeid"
+    datatype: "int"
+    parameter:
+      name: "storeid"
+      type: "raw"
+  - output_column_name: "territoryid"
+    expression: "territoryid"
+    datatype: "int"
+    parameter:
+      name: "territoryid"
+      type: "raw"
+  active_flag: true

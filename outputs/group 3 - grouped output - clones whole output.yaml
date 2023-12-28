@@ -1,0 +1,41 @@
+---
+output_name: "Group 3 - Grouped Output - clones whole output"
+output_type: "table"
+output_package_parameters:
+  table_name: "$grouped_output3"
+  manage_table: true
+  table_schema: "cloning_project"
+  create_cci_on_table: false
+  output_source_id_partition: true
+  reset_channels_on_delta_overwrite: true
+output_description: "x"
+output_sub_type: "delta_lake"
+connection_name: "Group 3 - Databricks Delta Output"
+alert_parameters:
+  output_failure_emails: []
+  output_failure_topics: []
+  output_success_emails: []
+  output_success_topics: []
+post_output_type: "none"
+template_name: "${GROUP} - Grouped Output - clones whole output"
+group_name: "Group 3"
+columns:
+- position: 1
+  name: "cardnumber"
+  datatype: "string"
+- position: 2
+  name: "cardtype"
+  datatype: "string"
+- position: 3
+  name: "creditcardid"
+  datatype: "integer"
+- position: 4
+  name: "expmonth"
+  datatype: "integer"
+- position: 5
+  name: "expyear"
+  datatype: "integer"
+- position: 6
+  name: "modifieddate"
+  datatype: "timestamp"
+active_flag: true

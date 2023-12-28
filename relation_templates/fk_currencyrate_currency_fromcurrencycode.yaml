@@ -1,0 +1,9 @@
+---
+name: "FK_CurrencyRate_Currency_FromCurrencyCode"
+related_source_template_name: "${GROUP} - Currency"
+description: "Auto-created from connection metadata"
+expression: "[This].fromcurrencycode = [Related].currencycode"
+primary_flag: false
+source_cardinality: "M"
+related_source_cardinality: "1"
+active_flag: true

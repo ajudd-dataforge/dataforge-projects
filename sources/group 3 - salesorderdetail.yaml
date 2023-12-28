@@ -1,0 +1,350 @@
+---
+source_name: "Group 3 - SalesOrderDetail"
+source_description: "Auto-created from connection metadata"
+ingestion_parameters:
+  fetch_size: 5000
+  source_query: "select * from Sales.SalesOrderDetail"
+  trim_string_data: "no_trim"
+  disable_initiation: false
+  spark_jdbc_parameters: {}
+parsing_parameters:
+  force_case_insensitive: true
+  fail_on_missing_columns: false
+  lock_schema_new_columns: false
+  lock_schema_datatype_changes: false
+cdc_refresh_parameters:
+  date_column: []
+  key_columns:
+  - "SalesOrderID"
+  - "SalesOrderDetailID"
+  datetime_format: ""
+  exclude_from_cdc: []
+  get_date_from_file_name: false
+alert_parameters:
+  ingestion_failure_emails: []
+  ingestion_failure_topics: []
+  ingestion_success_emails: []
+  ingestion_success_topics: []
+  data_processing_failure_emails: []
+  data_processing_failure_topics: []
+  data_processing_success_emails: []
+  data_processing_success_topics: []
+refresh_type: "key"
+connection_type: "table"
+connection_name: "Group 3 - Adventureworks"
+initiation_type: "scheduled"
+cost_parameters:
+  max_retries: 0
+  disable_bucketing: false
+  disable_profiling: true
+template_name: "${GROUP} - SalesOrderDetail"
+group_name: "Group 3"
+process_configuration_name: "Default Sparky Configuration"
+active_flag: true
+raw_attributes:
+- raw_attribute_name: "carriertrackingnumber"
+  column_normalized: "carriertrackingnumber"
+  data_type: "string"
+  version_number: 1
+  column_alias: "carriertrackingnumber"
+  unique_flag: false
+- raw_attribute_name: "linetotal"
+  column_normalized: "linetotal"
+  data_type: "decimal"
+  version_number: 1
+  column_alias: "linetotal"
+  unique_flag: false
+- raw_attribute_name: "modifieddate"
+  column_normalized: "modifieddate"
+  data_type: "timestamp"
+  version_number: 1
+  column_alias: "modifieddate"
+  unique_flag: false
+- raw_attribute_name: "orderqty"
+  column_normalized: "orderqty"
+  data_type: "int"
+  version_number: 1
+  column_alias: "orderqty"
+  unique_flag: false
+- raw_attribute_name: "productid"
+  column_normalized: "productid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "productid"
+  unique_flag: false
+- raw_attribute_name: "rowguid"
+  column_normalized: "rowguid"
+  data_type: "string"
+  version_number: 1
+  column_alias: "rowguid"
+  unique_flag: false
+- raw_attribute_name: "salesorderdetailid"
+  column_normalized: "salesorderdetailid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "salesorderdetailid"
+  unique_flag: false
+- raw_attribute_name: "salesorderid"
+  column_normalized: "salesorderid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "salesorderid"
+  unique_flag: false
+- raw_attribute_name: "specialofferid"
+  column_normalized: "specialofferid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "specialofferid"
+  unique_flag: false
+- raw_attribute_name: "unitprice"
+  column_normalized: "unitprice"
+  data_type: "decimal"
+  version_number: 1
+  column_alias: "unitprice"
+  unique_flag: false
+- raw_attribute_name: "unitpricediscount"
+  column_normalized: "unitpricediscount"
+  data_type: "decimal"
+  version_number: 1
+  column_alias: "unitpricediscount"
+  unique_flag: false
+dependencies:
+- source_name: "Group 3 - Customer"
+  hard_dependency_flag: false
+  dependency_interval: "00:00:00"
+  active_flag: true
+- source_name: "Group 3 - SalesOrderHeader"
+  hard_dependency_flag: false
+  dependency_interval: "00:00:00"
+  active_flag: true
+relations:
+- relation_uid: "[Group 3 - SalesOrderDetail]-Group 3 - Customer-[SOD to Customer\
+    \ using token]"
+  related_source_name: "Group 3 - Customer"
+  relation_name: "SOD to Customer using token"
+  relation_template_name: "SOD to Customer using token"
+  primary_flag: false
+  expression: "[This].token_rule = [Related].customerid"
+  source_cardinality: "M"
+  related_source_cardinality: "1"
+  expression_parsed: "P<1> = P<2>"
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "enrichment"
+    name: "token_rule"
+    source_name: "Group 3 - SalesOrderDetail"
+  - id: 2
+    type: "raw"
+    name: "customerid"
+    source_name: "Group 3 - Customer"
+- relation_uid: "[Group 3 - SalesOrderDetail]-Group 3 - SalesOrderHeader-[FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID]"
+  related_source_name: "Group 3 - SalesOrderHeader"
+  relation_name: "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID"
+  relation_template_name: "FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID"
+  primary_flag: false
+  description: "Auto-created from connection metadata"
+  expression: "[This].salesorderid = [Related].salesorderid"
+  source_cardinality: "M"
+  related_source_cardinality: "1"
+  expression_parsed: "P<1> = P<2>"
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "salesorderid"
+    source_name: "Group 3 - SalesOrderDetail"
+  - id: 2
+    type: "raw"
+    name: "salesorderid"
+    source_name: "Group 3 - SalesOrderHeader"
+rules:
+- attribute_name: "rule_using_token_relation"
+  rule_template_name: "rule using token relation"
+  name: "rule using token relation"
+  datatype: "string"
+  cast_datatype: ""
+  expression: "[Group 3 - Customer].accountnumber"
+  expression_parsed: "P<1>"
+  rule_type_code: "E"
+  keep_current_flag: false
+  window_function_flag: false
+  unique_flag: false
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "accountnumber"
+    source_name: "Group 3 - Customer"
+    relations:
+    - "[Group 3 - SalesOrderDetail]-Group 3 - Customer-[SOD to Customer using token]"
+- attribute_name: "token_rule"
+  rule_template_name: "token rule"
+  name: "token rule"
+  datatype: "string"
+  expression: "'22334'"
+  expression_parsed: "'22334'"
+  rule_type_code: "E"
+  keep_current_flag: false
+  window_function_flag: false
+  unique_flag: false
+  active_flag: true
+- attribute_name: "t_rule_with_2t_relation"
+  rule_template_name: "T rule with 2T relation"
+  name: "T rule with 2T relation"
+  datatype: "int"
+  cast_datatype: ""
+  expression: "[Group 3 - Customer].customerid"
+  expression_parsed: "P<1>"
+  rule_type_code: "E"
+  keep_current_flag: false
+  window_function_flag: false
+  unique_flag: false
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "customerid"
+    source_name: "Group 3 - Customer"
+    relations:
+    - "[Group 3 - SalesOrderDetail]-Group 3 - SalesOrderHeader-[FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID]"
+    - "[Group 3 - SalesOrderHeader]-Group 3 - Customer-[FK_SalesOrderHeader_Customer_CustomerID]"
+- attribute_name: "t_rule_with_t_relation"
+  rule_template_name: "T rule with T relation"
+  name: "T rule with T relation"
+  datatype: "int"
+  cast_datatype: ""
+  expression: "[Group 3 - SalesOrderHeader].billtoaddressid"
+  expression_parsed: "P<1>"
+  rule_type_code: "E"
+  keep_current_flag: false
+  window_function_flag: false
+  unique_flag: false
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "billtoaddressid"
+    source_name: "Group 3 - SalesOrderHeader"
+    relations:
+    - "[Group 3 - SalesOrderDetail]-Group 3 - SalesOrderHeader-[FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID]"
+- attribute_name: "u_rule_with_t_relation"
+  rule_template_name: "U rule with T relation"
+  name: "U rule with T relation"
+  datatype: "int"
+  cast_datatype: ""
+  expression: "[Group 3 - SalesOrderHeader].billtoaddressid"
+  expression_parsed: "P<1>"
+  rule_type_code: "E"
+  keep_current_flag: false
+  window_function_flag: false
+  unique_flag: false
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "billtoaddressid"
+    source_name: "Group 3 - SalesOrderHeader"
+    relations:
+    - "[Group 3 - SalesOrderDetail]-Group 3 - SalesOrderHeader-[FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID]"
+channels:
+- output_name: "OBT"
+  output_source_name: "Group 1 - SalesOrderDetail"
+  operation_type: "none"
+  output_package_parameters:
+    key_history: false
+    full_output_flag: false
+    custom_parameters: {}
+    allow_output_regeneration: true
+  include_pass_flag: true
+  include_fail_flag: false
+  include_warn_flag: false
+  output_source_columns:
+  - output_column_name: "carriertrackingnumber"
+    expression: "carriertrackingnumber"
+    datatype: "string"
+    parameter:
+      name: "carriertrackingnumber"
+      type: "raw"
+  - output_column_name: "linetotal"
+    expression: "linetotal"
+    datatype: "decimal"
+    parameter:
+      name: "linetotal"
+      type: "raw"
+  - output_column_name: "modifieddate"
+    expression: "modifieddate"
+    datatype: "timestamp"
+    parameter:
+      name: "modifieddate"
+      type: "raw"
+  - output_column_name: "orderqty"
+    expression: "orderqty"
+    datatype: "int"
+    parameter:
+      name: "orderqty"
+      type: "raw"
+  - output_column_name: "productid"
+    expression: "productid"
+    datatype: "int"
+    parameter:
+      name: "productid"
+      type: "raw"
+  - output_column_name: "rowguid"
+    expression: "rowguid"
+    datatype: "string"
+    parameter:
+      name: "rowguid"
+      type: "raw"
+  - output_column_name: "salesorderdetailid"
+    expression: "salesorderdetailid"
+    datatype: "int"
+    parameter:
+      name: "salesorderdetailid"
+      type: "raw"
+  - output_column_name: "salesorderid"
+    expression: "salesorderid"
+    datatype: "int"
+    parameter:
+      name: "salesorderid"
+      type: "raw"
+  - output_column_name: "specialofferid"
+    expression: "specialofferid"
+    datatype: "int"
+    parameter:
+      name: "specialofferid"
+      type: "raw"
+  - output_column_name: "t_rule_with_2t_relation"
+    expression: "t_rule_with_2t_relation"
+    datatype: "int"
+    parameter:
+      name: "t_rule_with_2t_relation"
+      type: "enrichment"
+  - output_column_name: "t_rule_with_t_relation"
+    expression: "t_rule_with_t_relation"
+    datatype: "int"
+    parameter:
+      name: "t_rule_with_t_relation"
+      type: "enrichment"
+  - output_column_name: "unitprice"
+    expression: "unitprice"
+    datatype: "decimal"
+    parameter:
+      name: "unitprice"
+      type: "raw"
+  - output_column_name: "unitpricediscount"
+    expression: "unitpricediscount"
+    datatype: "decimal"
+    parameter:
+      name: "unitpricediscount"
+      type: "raw"
+  - output_column_name: "u_rule_with_t_relation"
+    expression: "u_rule_with_t_relation"
+    datatype: "int"
+    parameter:
+      name: "u_rule_with_t_relation"
+      type: "enrichment"
+  active_flag: true
+tokens:
+- name: "example token"
+  value: "22334"

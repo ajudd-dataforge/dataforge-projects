@@ -1,0 +1,4 @@
+---
+object_name: "${GROUP} - Grouped Output - clones whole output"
+parameters:
+  view_name: "${GROUP}_grouped_output"

@@ -1,0 +1,214 @@
+---
+source_name: "Group 3 - SalesOrderHeader"
+source_description: "Auto-created from connection metadata"
+ingestion_parameters:
+  fetch_size: 5000
+  source_query: "select * from Sales.SalesOrderHeader"
+  trim_string_data: "no_trim"
+  disable_initiation: false
+  spark_jdbc_parameters: {}
+parsing_parameters:
+  force_case_insensitive: true
+  fail_on_missing_columns: false
+  lock_schema_new_columns: false
+  lock_schema_datatype_changes: false
+cdc_refresh_parameters:
+  date_column: []
+  key_columns:
+  - "SalesOrderID"
+  datetime_format: ""
+  exclude_from_cdc: []
+  get_date_from_file_name: false
+alert_parameters:
+  ingestion_failure_emails: []
+  ingestion_failure_topics: []
+  ingestion_success_emails: []
+  ingestion_success_topics: []
+  data_processing_failure_emails: []
+  data_processing_failure_topics: []
+  data_processing_success_emails: []
+  data_processing_success_topics: []
+refresh_type: "key"
+connection_type: "table"
+connection_name: "AdventureWorks no agent"
+initiation_type: "scheduled"
+cost_parameters:
+  max_retries: 0
+  disable_bucketing: false
+  disable_profiling: true
+template_name: "${GROUP} - SalesOrderHeader"
+group_name: "Group 3"
+process_configuration_name: "Default Sparky Configuration"
+active_flag: true
+raw_attributes:
+- raw_attribute_name: "accountnumber"
+  column_normalized: "accountnumber"
+  data_type: "string"
+  version_number: 1
+  column_alias: "accountnumber"
+  unique_flag: false
+- raw_attribute_name: "billtoaddressid"
+  column_normalized: "billtoaddressid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "billtoaddressid"
+  unique_flag: false
+- raw_attribute_name: "creditcardid"
+  column_normalized: "creditcardid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "creditcardid"
+  unique_flag: false
+- raw_attribute_name: "currencyrateid"
+  column_normalized: "currencyrateid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "currencyrateid"
+  unique_flag: false
+- raw_attribute_name: "customerid"
+  column_normalized: "customerid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "customerid"
+  unique_flag: false
+- raw_attribute_name: "modifieddate"
+  column_normalized: "modifieddate"
+  data_type: "timestamp"
+  version_number: 1
+  column_alias: "modifieddate"
+  unique_flag: false
+- raw_attribute_name: "rowguid"
+  column_normalized: "rowguid"
+  data_type: "string"
+  version_number: 1
+  column_alias: "rowguid"
+  unique_flag: false
+- raw_attribute_name: "salesorderid"
+  column_normalized: "salesorderid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "salesorderid"
+  unique_flag: true
+- raw_attribute_name: "territoryid"
+  column_normalized: "territoryid"
+  data_type: "int"
+  version_number: 1
+  column_alias: "territoryid"
+  unique_flag: false
+dependencies:
+- source_name: "Group 3 - Customer"
+  hard_dependency_flag: false
+  dependency_interval: "00:00:00"
+  active_flag: true
+- source_name: "Group 3 - SalesOrderDetail"
+  hard_dependency_flag: false
+  dependency_interval: "00:00:00"
+  active_flag: true
+relations:
+- relation_uid: "[Group 3 - SalesOrderHeader]-Group 3 - Customer-[FK_SalesOrderHeader_Customer_CustomerID]"
+  related_source_name: "Group 3 - Customer"
+  relation_name: "FK_SalesOrderHeader_Customer_CustomerID"
+  relation_template_name: "FK_SalesOrderHeader_Customer_CustomerID"
+  primary_flag: false
+  description: "Auto-created from connection metadata"
+  expression: "[This].customerid = [Related].customerid"
+  source_cardinality: "M"
+  related_source_cardinality: "1"
+  expression_parsed: "P<1> = P<2>"
+  active_flag: true
+  parameters:
+  - id: 1
+    type: "raw"
+    name: "customerid"
+    source_name: "Group 3 - SalesOrderHeader"
+  - id: 2
+    type: "raw"
+    name: "customerid"
+    source_name: "Group 3 - Customer"
+channels:
+- output_name: "Group 3 - Grouped Output - clones whole output"
+  output_source_name: "Group 1 - SalesOrderHeader"
+  operation_type: "none"
+  output_package_parameters:
+    key_history: false
+    full_output_flag: false
+    custom_parameters: {}
+    allow_output_regeneration: true
+  include_pass_flag: true
+  include_fail_flag: false
+  include_warn_flag: false
+  output_source_columns:
+  - output_column_name: "creditcardid"
+    expression: "creditcardid"
+    datatype: "int"
+    parameter:
+      name: "creditcardid"
+      type: "raw"
+  - output_column_name: "modifieddate"
+    expression: "modifieddate"
+    datatype: "timestamp"
+    parameter:
+      name: "modifieddate"
+      type: "raw"
+  active_flag: true
+- output_name: "OBT"
+  output_source_name: "Group 1 - SalesOrderHeader"
+  operation_type: "none"
+  output_package_parameters:
+    key_history: false
+    full_output_flag: false
+    custom_parameters: {}
+    allow_output_regeneration: true
+  include_pass_flag: true
+  include_fail_flag: false
+  include_warn_flag: false
+  output_source_columns:
+  - output_column_name: "accountnumber"
+    expression: "accountnumber"
+    datatype: "string"
+    parameter:
+      name: "accountnumber"
+      type: "raw"
+  - output_column_name: "creditcardid"
+    expression: "creditcardid"
+    datatype: "int"
+    parameter:
+      name: "creditcardid"
+      type: "raw"
+  - output_column_name: "currencyrateid"
+    expression: "currencyrateid"
+    datatype: "int"
+    parameter:
+      name: "currencyrateid"
+      type: "raw"
+  - output_column_name: "customerid"
+    expression: "customerid"
+    datatype: "int"
+    parameter:
+      name: "customerid"
+      type: "raw"
+  - output_column_name: "modifieddate"
+    expression: "modifieddate"
+    datatype: "timestamp"
+    parameter:
+      name: "modifieddate"
+      type: "raw"
+  - output_column_name: "rowguid"
+    expression: "rowguid"
+    datatype: "string"
+    parameter:
+      name: "rowguid"
+      type: "raw"
+  - output_column_name: "salesorderid"
+    expression: "salesorderid"
+    datatype: "int"
+    parameter:
+      name: "salesorderid"
+      type: "raw"
+  - output_column_name: "territoryid"
+    expression: "territoryid"
+    datatype: "int"
+    parameter:
+      name: "territoryid"
+      type: "raw"
+  active_flag: true
